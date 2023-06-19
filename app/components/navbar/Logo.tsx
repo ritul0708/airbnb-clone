@@ -12,10 +12,11 @@ const Logo = () => {
       src='/images/logo.png'
       alt='logo'
       className='hidden md:block cursor-pointer'
-      width={100}
-      height={100}
+      width='100'
+      height='100'
+      priority
     />
   )
 }
 
-export default Logo
+export default Logo;
