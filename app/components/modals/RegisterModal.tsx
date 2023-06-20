@@ -94,24 +94,6 @@ const RegisterModal = () => {
         icon={AiOutlineGithub}
         onClick={() => {}}
       />
-      {/* <div 
-        className="
-          text-neutral-500 
-          text-center 
-          mt-4 
-          font-light
-        "
-      >
-        <p>Already have an account?
-          <span 
-            className="
-              text-neutral-800
-              cursor-pointer 
-              hover:underline
-            "
-            > Log in</span>
-        </p>
-      </div> */}
       <div className='text-neutral-500 text-center mt4 font-light'>
         <div className='justify-center flex flex-row items-center gap-2'>
           <div>Already have an account?</div>
