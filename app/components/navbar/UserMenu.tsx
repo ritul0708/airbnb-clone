@@ -20,19 +20,26 @@ const UserMenu: React.FC<UserMenuProps> = ({
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
   
-  const toggleOpen = useCallback(
-    () => {
-      setIsOpen(value => !value)
-    },
-    [],
-  )
+  const toggleOpen = useCallback(() => {
+    setIsOpen(value => !value)
+  }, []);
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    // add airbnb home functionality
+  }, [currentUser, loginModal]);
+
+
   
   return (
     <div className='relative'>
       <div className='flex flex-row ic gap-3'>
         <div
           className='hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'
-          onClick={() => {}}
+          onClick={onRent}
         >
           Airbnb Your Home
         </div>
