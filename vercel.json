@@ -1,6 +1,0 @@
-{
-  "builds": [
-    { "src": "prisma generate", "use": "@vercel/node" },
-    { "src": "npm run build", "use": "@vercel/static" }
-  ]
-}
