@@ -1,23 +1,27 @@
 'use client';
 
-import React from 'react';
-import { DateRange, Range, RangeKeyDict } from 'react-date-range';
+import { 
+  DateRange, 
+  Range, 
+  RangeKeyDict
+} from 'react-date-range';
+
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-interface CalendarProps {
-  value: Range;
+interface DatePickerProps {
+  value: Range,
+  onChange: (value: RangeKeyDict) => void;
   disabledDates?: Date[];
-  onChange:(value: RangeKeyDict) => void;
 }
 
-const Calendar: React.FC<CalendarProps> = ({
+const DatePicker: React.FC<DatePickerProps> = ({
   value,
-  disabledDates,
-  onChange
+  onChange,
+  disabledDates
 }) => {
-  return (
-    <DateRange 
+  return ( 
+    <DateRange
       rangeColors={['#262626']}
       ranges={[value]}
       date={new Date()}
@@ -27,7 +31,7 @@ const Calendar: React.FC<CalendarProps> = ({
       minDate={new Date()}
       disabledDates={disabledDates}
     />
-  )
+   );
 }
-
-export default Calendar;
+ 
+export default DatePicker;

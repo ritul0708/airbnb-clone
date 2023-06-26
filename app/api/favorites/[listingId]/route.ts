@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 
-import prisma from '@/app/libs/prismadb';
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import prisma from "@/app/libs/prismadb";
 
 interface IParams {
-  listingId: string;
+  listingId?: string;
 }
 
 export async function POST(
-  request: Request,
-  { params }: { params: IParams}
+  request: Request, 
+  { params }: { params: IParams }
 ) {
   const currentUser = await getCurrentUser();
 
@@ -29,10 +29,10 @@ export async function POST(
 
   const user = await prisma.user.update({
     where: {
-      id: currentUser.id,
+      id: currentUser.id
     },
     data: {
-      favoriteIds,
+      favoriteIds
     }
   });
 
@@ -40,8 +40,8 @@ export async function POST(
 }
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: IParams}
+  request: Request, 
+  { params }: { params: IParams }
 ) {
   const currentUser = await getCurrentUser();
 
@@ -61,10 +61,10 @@ export async function DELETE(
 
   const user = await prisma.user.update({
     where: {
-      id: currentUser.id,
+      id: currentUser.id
     },
     data: {
-      favoriteIds,
+      favoriteIds
     }
   });
 

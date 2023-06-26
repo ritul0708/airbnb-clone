@@ -12,7 +12,7 @@ interface HomeProps {
   searchParams: IListingsParams
 };
 
-const Home = async ({ searchParams }: HomeProps) => {
+export default async function Home ({ searchParams }: HomeProps) {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
@@ -53,4 +53,3 @@ const Home = async ({ searchParams }: HomeProps) => {
   )
 }
 
-export default Home;
