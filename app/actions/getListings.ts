@@ -1,4 +1,4 @@
-import prisma from '@/app/libs/prismadb';
+import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams {
   userId?: string;
@@ -14,16 +14,16 @@ export interface IListingsParams {
 export default async function getListings(
   params: IListingsParams
 ) {
-  try{
-    const { 
-      userId, 
+  try {
+    const {
+      userId,
       roomCount, 
       guestCount, 
       bathroomCount, 
-      startDate, 
-      endDate, 
-      locationValue, 
-      category 
+      locationValue,
+      startDate,
+      endDate,
+      category,
     } = params;
 
     let query: any = {};
@@ -39,18 +39,19 @@ export default async function getListings(
     if (roomCount) {
       query.roomCount = {
         gte: +roomCount
-      };
+      }
     }
 
     if (guestCount) {
       query.guestCount = {
         gte: +guestCount
-      };
+      }
     }
+
     if (bathroomCount) {
       query.bathroomCount = {
         gte: +bathroomCount
-      };
+      }
     }
 
     if (locationValue) {
@@ -63,17 +64,17 @@ export default async function getListings(
           some: {
             OR: [
               {
-                endDate: { gte: startDate},
-                startDate: { lte: startDate},
+                endDate: { gte: startDate },
+                startDate: { lte: startDate }
               },
               {
-                endDate: { gte: endDate},
-                startDate: { lte: endDate},
+                startDate: { lte: endDate },
+                endDate: { gte: endDate }
               }
             ]
           }
         }
-      };
+      }
     }
 
     const listings = await prisma.listing.findMany({
@@ -86,7 +87,7 @@ export default async function getListings(
     const safeListings = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
-    }))
+    }));
 
     return safeListings;
   } catch (error: any) {
