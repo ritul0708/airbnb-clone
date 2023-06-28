@@ -236,7 +236,6 @@ const RentModal = () => {
           errors={errors}
           required
         />
-        <hr />
         <Input
           id="description"
           label="Description"
